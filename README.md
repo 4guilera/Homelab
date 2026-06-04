@@ -23,8 +23,7 @@ I have two proxmox nodes running on mini PC's. One node runs offensive lab envir
     10.0.20.10    10.0.20.5     10.0.20.11
 
     ROLE: BLUE     NFS/ZFS      ROLE: RED
-    (future SIEM,  storage
-     sensors)                   DC01  .60
+    Splunk  .20    storage      DC01  .60
                                 WS01  .61
                                 target .62
                                 kali   .63
@@ -89,12 +88,10 @@ Per-technique writeups following the purple team loop: pick an ATT&CK technique,
 
 Two-node Proxmox VE 9.2 cluster with a QDevice quorum tie-breaker running on TrueNAS. Survives a single-node failure. Shared NFS storage for templates, ISOs, and backups.
 
-Admin access is through paul@pve with TOTP 2FA. IaC automation uses a dedicated iac@pve API token with a least-privilege role — no shared credentials between human and machine access.
+Admin access is through paul@pve with TOTP 2FA. IaC automation uses a dedicated iac@pve API token with a least-privilege role — no shared credentials.
 
 ## What's next
 
-- [ ] Ansible configuration for the range (AD, Sysmon, log forwarding)
-- [ ] SIEM deployment on node1 (evaluating Splunk vs Wazuh)
 - [ ] Suricata/Zeek network sensors
 - [ ] Detection-as-code pipeline
 - [ ] Purple team technique writeups
