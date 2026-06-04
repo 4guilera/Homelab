@@ -1,8 +1,8 @@
-# homelab
+# My Homelab
 
-My home network and cybersecurity lab. This repo is the central hub — it documents the infrastructure, the architecture decisions, and links out to individual project repos where the actual work lives.
+Here's the repo for my cybersecurity and cloud-focused homelab. This is the central repo that documents the infrastructure and individual projects I have worked on.
 
-The short version: two mini PCs running Proxmox, a NAS, and a UniFi network. One node runs offensive lab environments, the other runs (or will run) the defensive stack. Everything is built as code and designed to be torn down and rebuilt on demand.
+I have two proxmox nodes running on mini PC's. One node runs offensive lab environments and the other runs a defensive stack. Everything is built with IaC in mind so it can be easily torn down and rebuilt.
 
 ## Architecture
 
@@ -47,8 +47,8 @@ Everything on VLAN 20 (Lab) — 10.0.20.0/24
 
 Each project has its own repo with detailed docs. Listed in build order.
 
-### [range-as-code](https://github.com/USERNAME/range-as-code)
-**Status: foundation complete**
+### [range-as-code](https://github.com/4guilera/range-as-code)
+**Status: Groundwork Completed on 6/3**
 
 The purple team range — a four-VM Active Directory environment deployed entirely as infrastructure-as-code. Packer builds Windows templates with unattended installs. OpenTofu clones them into a live range. Cloud-init handles the Linux VMs. Next step is Ansible for AD promotion, domain join, and Sysmon deployment.
 
@@ -100,6 +100,3 @@ Admin access is through paul@pve with TOTP 2FA. IaC automation uses a dedicated 
 - [ ] Purple team technique writeups
 - [ ] Network isolation for range VMs (dedicated bridge)
 
-## Why not Ludus / GOAD / DetectionLab?
-
-Looked at all of them. Ludus takes over the entire host — can't run anything else on that node. GOAD is solid but it's someone else's lab. This is the "I built it myself" version, using the same tools (Packer, Terraform, Ansible) that real environments use.
