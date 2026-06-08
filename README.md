@@ -55,7 +55,7 @@ The purple team range — a four-VM Active Directory environment deployed entire
 
 ---
 
-### [detection-engineering](github.com/4guilera/detection-engineering)
+### [detection-engineering](https://github.com/4guilera/detection-engineering)
 **Status: Operational**
 
 Sigma rules repo with GitHub Actions CI to lint and validate detections on every commit. Rules tested against sample log datasets before they hit the SIEM.
