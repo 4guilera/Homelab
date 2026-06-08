@@ -47,7 +47,7 @@ Everything on VLAN 20 (Lab) — 10.0.20.0/24
 Each project has its own repo with detailed docs. Listed in build order.
 
 ### [range-as-code](https://github.com/4guilera/range-as-code)
-**Status: Groundwork Completed on 6/3**
+**Status: Operational**
 
 The purple team range — a four-VM Active Directory environment deployed entirely as infrastructure-as-code. Packer builds Windows templates with unattended installs. OpenTofu clones them into a live range. Cloud-init handles the Linux VMs. Next step is Ansible for AD promotion, domain join, and Sysmon deployment.
 
@@ -55,8 +55,8 @@ The purple team range — a four-VM Active Directory environment deployed entire
 
 ---
 
-### detection-engineering
-**Status: planned**
+### [detection-engineering](github.com/4guilera/detection-engineering)
+**Status: Operational**
 
 Sigma rules repo with GitHub Actions CI to lint and validate detections on every commit. Rules tested against sample log datasets before they hit the SIEM.
 
