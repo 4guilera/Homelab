@@ -92,8 +92,6 @@ Admin access is through paul@pve with TOTP 2FA. IaC automation uses a dedicated 
 
 ## What's next
 
-- [ ] Suricata/Zeek network sensors
-- [ ] Detection-as-code pipeline
 - [ ] Purple team technique writeups
 - [ ] Network isolation for range VMs (dedicated bridge)
 
