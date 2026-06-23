@@ -6,28 +6,53 @@ I have two proxmox nodes running on mini PC's. One node runs offensive lab envir
 
 ## Architecture
 
-```
-                     Internet
-                        |
-                  Cloudflare ZT
-                   (tunnel access)
-                        |
-                    UniFi UDR7
-                   192.168.1.1
-                        |
-                  USW Lite 8 PoE
-                   (gigabit sw)
-                 /      |       \
-                /       |        \
-    pve-node1      TrueNAS      pve-node2
-    10.0.20.10    10.0.20.5     10.0.20.11
+```mermaid
 
-    ROLE: BLUE     NFS/ZFS      ROLE: RED
-    Splunk  .20    storage      DC01  .60
-                                WS01  .61
-                                target .62
-                                kali   .63
-                                provisioner .50
+flowchart TD
+    NET["Internet"] --> CF["Cloudflare ZT<br/>pve.apt-get-paul.com"]
+    CF --> UDR["UniFi UDR7<br/>192.168.1.1"]
+    UDR --> SW["USW Lite 8 PoE<br/>gigabit switch"]
+
+    SW --> N1
+    SW --> NAS
+    SW --> N2
+
+    subgraph VLAN20["VLAN 20 — Lab — 10.0.20.0/24"]
+        subgraph N1["pve-node1 · .10 — blue / SIEM"]
+            SPL["Splunk · .20"]
+            PORT["Portainer · .3"]
+            CFD["cloudflared · .7"]
+        end
+        subgraph NAS["TrueNAS · .5 — NFS / ZFS"]
+            QD["QDevice · .6"]
+        end
+        subgraph N2["pve-node2 · .11 — red / range"]
+            PROV["provisioner · .50"]
+            DC["DC01 · .60"]
+            WS["WS01 · .61"]
+            TGT["target01 · .62"]
+            KALI["kali · .63"]
+        end
+    end
+
+    DC -. "forwarders" .-> SPL
+    WS -. "forwarders" .-> SPL
+
+    classDef infra fill:#F1EFE8,stroke:#5F5E5A,color:#2C2C2A;
+    classDef blue fill:#E6F1FB,stroke:#185FA5,color:#0C447C;
+    classDef red fill:#FCEBEB,stroke:#A32D2D,color:#791F1F;
+    classDef store fill:#E1F5EE,stroke:#0F6E56,color:#04342C;
+
+    class NET,CF,UDR,SW infra;
+    class SPL,PORT,CFD blue;
+    class PROV,DC,WS,TGT,KALI red;
+    class QD store;
+
+    style N1 fill:#F5F9FE,stroke:#185FA5;
+    style N2 fill:#FDF4F4,stroke:#A32D2D;
+    style NAS fill:#F0FAF6,stroke:#0F6E56;
+    style VLAN20 fill:#FBFAF7,stroke:#888780,stroke-dasharray:4 3;
+
 ```
 
 Everything on VLAN 20 (Lab) — 10.0.20.0/24
