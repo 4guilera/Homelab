@@ -98,6 +98,13 @@ Per-technique writeups following the purple team loop: pick an ATT&CK technique,
 
 ---
 
+### [DNS C2 Investigation & Report](https://github.com/4guilera/dns-c2-investigation)
+**Status: Operational**
+
+A full network-forensics investigation of a DNS command-and-control channel.
+
+---
+
 ## Network
 
 | VLAN | Name | Subnet | Purpose |
