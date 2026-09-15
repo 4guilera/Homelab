@@ -121,9 +121,3 @@ A full network-forensics investigation of a DNS command-and-control channel.
 Two-node Proxmox VE 9.2 cluster with a QDevice quorum tie-breaker running on TrueNAS. Survives a single-node failure. Shared NFS storage for templates, ISOs, and backups.
 
 Admin access is through paul@pve with TOTP 2FA. IaC automation uses a dedicated iac@pve API token with a least-privilege role — no shared credentials.
-
-## What's next
-
-- [ ] Purple team technique writeups
-- [ ] Network isolation for range VMs (dedicated bridge)
-
